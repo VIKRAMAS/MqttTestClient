@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.trinity.mqttclient</groupId>
+  <artifactId>MQTTclient</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+              <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3 -->
+			<dependency>
+			    <groupId>org.eclipse.paho</groupId>
+			    <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+			    <version>1.2.0</version>
+			</dependency>
+
+              <dependency>
+                     <groupId>org.codehaus.jackson</groupId>
+                     <artifactId>jackson-mapper-asl</artifactId>
+                     <version>1.9.13</version>
+                     <type>jar</type>
+              </dependency>
+              <dependency>
+                     <groupId>org.apache.kafka</groupId>
+                     <artifactId>kafka_2.9.2</artifactId>
+                     <version>0.8.1.1</version>
+                     <exclusions>
+                           <exclusion>
+                                  <groupId>org.apache.zookeeper</groupId>
+                                  <artifactId>zookeeper</artifactId>
+                           </exclusion>
+
+                     </exclusions>
+              </dependency>
+              <!-- <dependency> <groupId>org.apache.kafka</groupId> <artifactId>kafka_2.11</artifactId> 
+                     <version>0.10.1.1</version> </dependency> -->
+              <dependency>
+                     <groupId>org.codehaus.jettison</groupId>
+                     <artifactId>jettison</artifactId>
+                     <version>1.3.7</version>
+                     <type>jar</type>
+              </dependency>
+              <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+              <dependency>
+                     <groupId>log4j</groupId>
+                     <artifactId>log4j</artifactId>
+                     <version>1.2.17</version>
+              </dependency>
+              <dependency>
+                     <groupId>org.slf4j</groupId>
+                     <artifactId>slf4j-api</artifactId>
+                     <version>1.5.6</version>
+                     <type>jar</type>
+              </dependency>
+              <dependency>
+                     <groupId>org.slf4j</groupId>
+                     <artifactId>slf4j-simple</artifactId>
+                     <version>1.5.6</version>
+              </dependency>
+              <dependency>
+                     <groupId>org.apache.kafka</groupId>
+                     <artifactId>kafka-clients</artifactId>
+                     <version>0.9.0.1</version>
+                     <!-- <version>0.10.1.1</version> -->
+                     <type>jar</type>
+              </dependency>
+              <dependency>
+                     <groupId>org.eclipse.persistence</groupId>
+                     <artifactId>javax.persistence</artifactId>
+                     <version>2.1.0</version>
+              </dependency>
+              <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+              <dependency>
+                     <groupId>org.springframework</groupId>
+                     <artifactId>spring-context</artifactId>
+                     <version>4.2.4.RELEASE</version>
+              </dependency>
+              <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+              <dependency>
+                     <groupId>org.springframework</groupId>
+                     <artifactId>spring-core</artifactId>
+                     <version>4.2.4.RELEASE</version>
+              </dependency>
+              <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+              <dependency>
+                     <groupId>org.springframework</groupId>
+                     <artifactId>spring-web</artifactId>
+                     <version>4.2.4.RELEASE</version>
+              </dependency>
+              <!-- https://mvnrepository.com/artifact/org.json/json -->
+              <dependency>
+                     <groupId>org.json</groupId>
+                     <artifactId>json</artifactId>
+                     <version>20180130</version>
+              </dependency>
+              <dependency>
+                     <groupId>jdk.tools</groupId>
+                     <artifactId>jdk.tools</artifactId>
+                     <version>1.8.0_151</version>
+                     <scope>system</scope>
+                     <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
+              </dependency>
+
+       </dependencies>
+
+       <build>
+              <plugins>
+                     <plugin>
+                           <artifactId>maven-assembly-plugin</artifactId>
+                           <configuration>
+                                  <descriptorRefs>
+                                         <descriptorRef>jar-with-dependencies</descriptorRef>
+                                  </descriptorRefs>
+                                  <archive>
+                                         <manifest>
+                                                <mainClass>de.dcsquare.paho.client.subscriber.Subscriber</mainClass>
+                                         </manifest>
+                                  </archive>
+                           </configuration>
+                           <executions>
+                                  <execution>
+                                         <id>make-assembly</id>
+                                         <phase>package</phase>
+                                         <goals>
+                                                <goal>single</goal>
+                                         </goals>
+                                  </execution>
+                           </executions>
+                     </plugin>
+                     <plugin>
+                           <groupId>org.apache.maven.plugins</groupId>
+                           <artifactId>maven-compiler-plugin</artifactId>
+                           <version>2.5</version>
+                           <configuration>
+                                  <source>1.8</source>
+                                  <target>1.8</target>
+                                  <encoding>UTF-8</encoding>
+                           </configuration>
+                     </plugin>
+
+              </plugins>
+       </build>
+
+       <repositories>
+              <repository>
+                     <id>paho-mqtt-client</id>
+                     <name>Paho MQTT Client</name>
+                     <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
+              </repository>
+       </repositories>
+  
+</project>
